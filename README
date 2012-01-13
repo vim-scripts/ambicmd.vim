@@ -1,0 +1,31 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=3879
+
+*ambicmd* is a Vim plugin to use ambiguous command.
+Some plugins provide many useful command, but sometimes these are very long.
+At this time, you will define the key mappings to execute these. but:
+
+- You will have to define quite a lot of key mappings.
+- You should find unused key sequence for mapping.
+- Do you define a key mapping for a command only occasionally used?
+
+This plugin expands a ambiguous command by some patterns.  For example,
+
+  ("|" is cursor)
+  " Expands to the correct name from the lowercase.
+  :ref<Space>  =>  :Ref |
+
+  " Expands from the capital letter of the command.
+  :qr<Space>   =>  :QuickRun |
+
+  " There are some commands with "NeoComplCache" prefix.
+  :ncc<Space>  =>  :NeoComplCache|
+
+This plugin does nothing by default.
+You need write some settings to vimrc as follows.
+
+  cnoremap <expr> <Space> ambicmd#expand("\<Space>")
+  cnoremap <expr> <CR>    ambicmd#expand("\<CR>")
+
+
+Latest Version:
+https://github.com/thinca/vim-ambicmd
